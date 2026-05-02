@@ -317,13 +317,15 @@ export default function App() {
                     </button>
                   </div>
                 </div>
-                <div className="relative h-64 md:h-auto overflow-hidden">
+                <div className="relative h-64 md:h-auto overflow-hidden bg-zinc-800">
                   <img
                     src="/assets/images/special.jpg"
                     alt="Today's Special"
                     className="w-full h-full object-cover"
+                    onLoad={(e) => (e.currentTarget.style.opacity = '1')}
+                    style={{ opacity: 0, transition: 'opacity 0.3s ease-in-out' }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-zinc-900/90 via-zinc-900/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-zinc-900/90 via-zinc-900/40 to-transparent pointer-events-none" />
                 </div>
               </div>
             </motion.div>
