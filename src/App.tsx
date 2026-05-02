@@ -88,19 +88,14 @@ export default function App() {
     window.addEventListener('scroll', handleScroll);
     document.documentElement.classList.add('smooth-scroll');
 
-    const hasSeenSpecial = localStorage.getItem('hasSeenSpecial');
-    if (!hasSeenSpecial) {
-      const timer = setTimeout(() => {
-        setShowSpecialModal(true);
-        localStorage.setItem('hasSeenSpecial', 'true');
-      }, 1500);
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-        clearTimeout(timer);
-      };
-    }
+    const timer = setTimeout(() => {
+      setShowSpecialModal(true);
+    }, 1500);
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
